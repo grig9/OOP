@@ -2,12 +2,12 @@
 //
 class Flash 
 {
-  static function set($key, $message) 
+  public static function set($key, $message) 
   {
     $_SESSION[$key] = $message;
   }
   
-  static function get($key)
+  public static function get($key)
   {
     if(Flash::exists($key)) 
     {
@@ -16,14 +16,21 @@ class Flash
     return false;    
   }
 
-  static function del($key)
+  public static function del($key)
   { 
     unset($_SESSION[$key]);
   }
 
-  static function exists($key) 
+  public static function exists($key) 
   {
     return isset($_SESSION[$key]);
+  }
+
+  public static function display($key) 
+  {
+    if(Flash::exists($key)) {
+      echo $_SESSION[$key];
+    }
   }
 
 }
