@@ -1,14 +1,11 @@
 <?php
-require_once 'Flash.php';
+session_start();
+require_once 'Flash/Flash.php';
+require_once 'Router/Router.php';
 
-$flash = new Flash();
+Flash::del('success');
+echo Flash::get('error');
 
-$flash->set('error', 'This is error message!!');
-
-echo $flash->get('error');
-
-$flash->destroy();
-
-echo $flash->get('error');
-
-var_dump($_SESSION);die;
+echo "<br>";
+$route = new Router();
+// var_dump($_SESSION);die;
