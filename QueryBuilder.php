@@ -16,6 +16,14 @@ class QueryBuilder {
     return $statement->fetchAll(PDO::FETCH_ASSOC);
   }
 
+  // public function selectAll($table, $condition, $numb) 
+  // {
+  //   $sql = "SELECT * FROM {$table} {$condition}"; //WHERE id >= ?
+  //   $statement = $this->pdo->prepare($sql);
+  //   $statement->execute([$numb]);
+  //   return $statement->fetchAll(PDO::FETCH_ASSOC);
+  // }
+
   public function getOne($table, $id) 
   {
     $sql = "SELECT * FROM {$table} WHERE id = ?";
@@ -53,5 +61,12 @@ class QueryBuilder {
     $sql = "DELETE FROM {$table} WHERE id =:id";
     $statement = $this->pdo->prepare($sql);
     $statement->execute(["id" => $id]);
+  }
+
+  public function deleteAll($table) 
+  {
+    $sql = "DELETE FROM {$table}";
+    $statement = $this->pdo->prepare($sql);
+    $statement->execute();
   }
 }
