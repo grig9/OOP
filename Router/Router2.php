@@ -1,5 +1,5 @@
 <?php
-
+// методы это инструменты для маршрутизатора
 class Route2 {
   protected $routes;
 

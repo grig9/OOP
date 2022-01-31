@@ -1,5 +1,7 @@
 <?php
 
+// создаем инструменты для работы с БД
+
 class QueryBuilder {
   protected $pdo;
 
