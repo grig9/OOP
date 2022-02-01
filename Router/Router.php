@@ -8,17 +8,19 @@ class Router
   public function __construct($routes)
   {
     foreach($routes as $key => $val) {
-      $this->add($key, $val);
+      $this->addReg($key, $val);
     }
   }
 
-  public function add($route, $params) {
+  // Добавляем ключам регулярное выражение #^key$#
+  public function addReg($route, $params) {
     $route = '#^'.$route.'$#';
     $this->routes[$route] = $params;
   }
 
   public function my_match() {
     $url = ltrim($_SERVER['REQUEST_URI'], '/');
+    var_dump($url);
     foreach($this->routes as $route => $params) {
       if (preg_match($route, $url)) {
         $this->params = $params;
