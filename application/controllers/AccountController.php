@@ -1,12 +1,18 @@
 <?php
 
-class AccountController {
+namespace application\controllers;
+
+use application\core\Controller;
+
+class AccountController extends Controller {
 
   public function loginAction() {
     echo 'Страница входа';
+    var_dump($this->route);
   }
 
   public function registerAction() {
     echo 'Страница регистрации';
+    var_dump($this->route);
   }
 }

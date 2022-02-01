@@ -1,9 +1,20 @@
 <?php
-session_start();
-require_once 'Router/Router.php';
-require_once 'Router/AccountController.php';
-require_once 'Router/MainController.php';
+require 'application/lib/Dev.php';
 
-$routes = require 'Router/routes.php';
-$route = new Router($routes);
-$route->run();
+use application\core\Router;
+
+// функция автозагрузки классов
+spl_autoload_register(function ($class) {
+  $root = $_SERVER['DOCUMENT_ROOT'];
+  $ds   = DIRECTORY_SEPARATOR;
+
+  $path = $root . $ds . str_replace('\\', $ds, $class) . '.php';
+  if(file_exists($path)) {
+    require $path;
+  }
+});
+
+session_start();
+
+$router = new Router();
+$router->run();
