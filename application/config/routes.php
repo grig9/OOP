@@ -6,11 +6,6 @@ return [
     'action' => 'index'
   ],
 
-  'contacts'=> [
-    'controller' => 'main',
-    'action' => 'contacts'
-  ],
-
   'account/login'=> [
     'controller' => 'account',
     'action' => 'login'
