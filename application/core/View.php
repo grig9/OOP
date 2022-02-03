@@ -15,6 +15,7 @@ class View {
   }
 
   public function render($title, $vars = []) {
+    extract($vars);
     if(file_exists('application/views/'. $this->path . '.php')) {
       ob_start();
       require 'application/views/'. $this->path . '.php';
@@ -23,5 +24,11 @@ class View {
     } else {
       echo "Вид не найден - {$this->path}" ;
     }
+  }
+
+  public static function errorCode($code) {
+    http_response_code($code);
+    require 'application/views/errors/'. $code . '.php';
+    exit;
   }
 }
