@@ -9,14 +9,12 @@ class Router
   protected $routes = [];
   protected $params = [];
 
-  public function __construct()
-  {
+  public function __construct() {
     $arr = require 'application/config/routes.php';
     foreach($arr as $key => $val) {
       $this->addReg($key, $val);
     }
   }
-
   // функция добавляет ключам регулярное выражение #^key$#
   public function addReg($route, $params) {
     $route = '#^'.$route.'$#';
