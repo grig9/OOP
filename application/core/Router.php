@@ -3,7 +3,7 @@
 //пространство имен
 namespace application\core;
 
-use application\core\View;
+// use View;
 class Router 
 {
   protected $routes = [];

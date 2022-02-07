@@ -16,9 +16,10 @@ class View {
 
   public function render($title, $vars = []) {
     extract($vars);
-    if(file_exists('application/views/'. $this->path . '.php')) {
+    $path = 'application/views/'. $this->path . '.php';
+    if(file_exists($path)) {
       ob_start();
-      require 'application/views/'. $this->path . '.php';
+      require $path;
       $content = ob_get_clean();
       require 'application/views/layouts/'. $this->layout . '.php';
     } else {
@@ -28,7 +29,15 @@ class View {
 
   public static function errorCode($code) {
     http_response_code($code);
-    require 'application/views/errors/'. $code . '.php';
+    $path = 'application/views/errors/'. $code . '.php';
+    if(file_exists($path)) {
+      require $path;
+    } 
+    exit;
+  }
+
+  public function redirect($url) {
+    header("Location: $url");
     exit;
   }
 }

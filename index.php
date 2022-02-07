@@ -3,7 +3,6 @@ require 'application/lib/Dev.php';
 // require 'application/MyClass.php';
 
 use application\core\Router;
-use application\MyClass;
 
 // функция автозагрузки классов
 spl_autoload_register(function ($class) {
@@ -19,8 +18,6 @@ spl_autoload_register(function ($class) {
 });
 
 session_start();
-
-$my_class = new MyClass();
 
 $router = new Router();
 $router->run();
