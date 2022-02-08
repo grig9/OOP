@@ -13,7 +13,7 @@ spl_autoload_register(function ($class) {
   if(file_exists($path)) {
     require $path;
   } else {
-    echo "class $path  not exists";
+    echo "class $path  not exists1";
   }
 });
 
