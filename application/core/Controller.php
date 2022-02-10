@@ -14,7 +14,7 @@ abstract class Controller {
   public function __construct($route) 
   {
     $this->route = $route;
-    var_dump($this->checkAcl());die;
+    
     $this->view = new View($route); 
     $this->model = $this->loadModel($route['controller']);
   }
